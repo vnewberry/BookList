@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Input, Button} from "../components/SearchForm";
 import API from "../utils/API";
+import BookCard from "../components/BookCard";
 
 
 class Search extends Component {
@@ -60,6 +61,7 @@ class Search extends Component {
             onClick={this.handleFormSubmit}/>
         </div>
       </div>
+      <BookCard results={this.state.books} />
     </div>
     );
   }

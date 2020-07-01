@@ -1,16 +1,42 @@
 import React from "react";
+import axios from "axios";
 import "./style.css";
-function BookCard() {
-  return (
-<div className="card" style={{width: "18rem"}}>
-  <img src="..." className="card-img-top" alt="..."/>
-  <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/" className="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-  );
+
+
+
+
+function BookCard(props) {
+    console.log(props.results);
+
+    const saveBook = (i) => {
+        let choice = props.results[i].volumeInfo;
+        axios.post("/api/books", choice)
+        .then (res => console.log(res))
+        .catch (err => console.log(err));
+    }
+
+  
+
+    return props.results ? (
+        <>
+            {props.results.map(({ volumeInfo }, i) => {
+                return (<div key={i}>
+                    <h1>{volumeInfo.title}</h1>
+                    <h2>{volumeInfo.authors}</h2>
+                    <img src={volumeInfo.imageLinks.thumbnail} alt="book" />
+                    <p>{volumeInfo.description}</p>
+                    <span>
+                        <a href={volumeInfo.previewLink}><span>Preview Link </span></a>| 
+                        <a href={volumeInfo.infoLink}><span> Info Link </span></a>| 
+                        <span onClick={() => saveBook(i)}> Save</span>
+                    </span>
+                    
+                </div>)
+            })}
+
+        </>
+
+    ) : null;
 }
 
 export default BookCard;
