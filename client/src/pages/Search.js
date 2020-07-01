@@ -32,13 +32,13 @@ class Search extends Component {
     API.searchBooks(this.state.title)
       .then(res => {
         this.setState({books: res.data.items});
-        console.log(
-          res.data.items[0].volumeInfo.title, 
-          res.data.items[0].volumeInfo.authors, 
-          res.data.items[0].volumeInfo.description,
-          res.data.items[0].volumeInfo.imageLinks.thumbnail,
-          res.data.items[0].volumeInfo.previewLink,
-          res.data.items[0].volumeInfo.infoLink);
+        // console.log(
+        //   res.data.items[0].volumeInfo.title, 
+        //   res.data.items[0].volumeInfo.authors, 
+        //   res.data.items[0].volumeInfo.description,
+        //   res.data.items[0].volumeInfo.imageLinks.thumbnail,
+        //   res.data.items[0].volumeInfo.previewLink,
+        //   res.data.items[0].volumeInfo.infoLink);
           
       } )
       .catch(err => console.log(err))
@@ -61,7 +61,7 @@ class Search extends Component {
             onClick={this.handleFormSubmit}/>
         </div>
       </div>
-      <BookCard results={this.state.books} />
+      <BookCard books={this.state.books} />
     </div>
     );
   }

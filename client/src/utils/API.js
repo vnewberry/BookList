@@ -3,7 +3,7 @@ import axios from "axios"
 export default {
 
   searchBooks: function (term) {
-    return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${term}`)
+    return axios.get(`https://www.googleapis.com/books/v1/volumes?maxResults=2&q=${term}`)
   },
   // Gets all books
   getBooks: function () {
