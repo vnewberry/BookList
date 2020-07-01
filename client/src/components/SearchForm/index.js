@@ -10,6 +10,6 @@ export function Input(props) {
 
 export function Button(props) {
   return (
-    <a href="/" className="search_icon btn btn-success">{props.children}<i className="fas fa-search"></i></a>
+    <button {...props}  className="search_icon btn btn-success">{props.children}<i className="fas fa-search"></i></button>
   );
 }
