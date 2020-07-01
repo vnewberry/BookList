@@ -1,17 +1,15 @@
 import React from "react";
 import "./style.css";
 
-function SearchForm(props) {
+export function Input(props) {
   return (
-    <div className="container h-100">
-    <div className="d-flex justify-content-center h-100">
-      <div className="searchbar">
-        <input className="search_input" type="text" name="" placeholder="Search..." {...props}/>
-        <a href="/" className="search_icon btn btn-success">{props.children}<i className="fas fa-search"></i></a>
-      </div>
-    </div>
-  </div>
+    <input className="search_input" type="text" name="" placeholder="Search..." {...props}/>
   );
 }
 
-export default SearchForm;
+
+export function Button(props) {
+  return (
+    <a href="/" className="search_icon btn btn-success">{props.children}<i className="fas fa-search"></i></a>
+  );
+}

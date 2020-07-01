@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SearchForm from "../components/SearchForm";
+import {Input, Button} from "../components/SearchForm";
 import API from "../utils/API";
 
 
@@ -22,6 +22,7 @@ class Search extends Component {
     this.setState({
       [name]: value
     });
+    // console.log(this.state.title);
   };
   
   handleFormSubmit = event => {
@@ -45,7 +46,19 @@ class Search extends Component {
   };
   render() {
     return (
-     <SearchForm/>
+      <div className="container h-100">
+      <div className="d-flex justify-content-center h-100">
+        <div className="searchbar">
+         <Input
+             value={this.state.title}
+             onChange={this.handleInputChange}
+             name="title"
+             placeholder="Book Name (required)"
+         />
+          <Button/>
+        </div>
+      </div>
+    </div>
     );
   }
 }
