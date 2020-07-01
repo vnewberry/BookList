@@ -7,7 +7,7 @@ function SearchForm(props) {
     <div className="d-flex justify-content-center h-100">
       <div className="searchbar">
         <input className="search_input" type="text" name="" placeholder="Search..." {...props}/>
-        <a href="#" className="search_icon">{props.children}<i class="fas fa-search"></i></a>
+        <a href="/" className="search_icon btn btn-success">{props.children}<i className="fas fa-search"></i></a>
       </div>
     </div>
   </div>
