@@ -5,8 +5,14 @@ import "./style.css";
 class BookCard extends Component {
   state = {
     savedBooks: [],
+
+    
   };
 
+  handleSave = (result) => {
+    // API.saveBook();
+    console.log(result);
+  }
   componentDidMount() {
     API.getBooks()
       .then((savedBooks) => this.setState({ savedBooks: savedBooks }))
@@ -34,11 +40,12 @@ class BookCard extends Component {
         .catch((err) => console.error(err));
     }
   };
+  
 
   render() {
     return (
       <div>
-        {!this.props.books.length ? (
+        {this.props.noMatch ? (
           <h1 className="text-center">No Results to Display</h1>
         ) : (
           <div>
@@ -49,7 +56,13 @@ class BookCard extends Component {
                     <img
                       alt={result.volumeInfo.title}
                       className="img-fluid"
-                      src={result.volumeInfo.imageLinks.thumbnail}
+                      src={
+                        // {result.volumeInfo.imageLinks ? (
+                          result.volumeInfo.imageLinks.thumbnail
+//                           ) : ("https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101065/112815953-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6")
+// // cant get this thing to work right
+//                       }
+                    }
                     />
                   </div>
                   <div className="col-md-10">
@@ -57,7 +70,9 @@ class BookCard extends Component {
                       <h5 className="card-title">
                         {result.volumeInfo.title} by {result.volumeInfo.authors}
                       </h5>
-                      <p className="card-text">{result.volumeInfo.description}</p>
+                      <p className="card-text">
+                        {result.volumeInfo.description}
+                      </p>
                       <div>
                         <a
                           href={result.volumeInfo.previewLink}
@@ -68,14 +83,15 @@ class BookCard extends Component {
                           View
                         </a>
                         <button
-                          onClick={() => handleSave(result)}
-                          className="btn badge-pill btn-outline-warning mt-3 ml-3"
+                          onClick={() => this.handleSave(result)}
+                          className="btn badge-pill btn-outline-dark mt-3"
                         >
-                          {this.state.savedBooks
+                          {/* {this.state.savedBooks
                             .map((book) => book._id)
                             .includes(result._id)
                             ? "Unsave"
-                            : "Save"}
+                            : "Save"} */}
+                          save
                         </button>
                       </div>
                     </div>
