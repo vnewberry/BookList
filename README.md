@@ -7,7 +7,7 @@ This application allows the user to search for books using Google's Book API.  U
 ---
 
 ## To try out a deployed version of this application visit: 
-[Google Book Search(React)](https://book-search-list.herokuapp.com/)
+[Google Book Search(React)](https://google-books-search-vance.herokuapp.com/)
 
 ---
 
